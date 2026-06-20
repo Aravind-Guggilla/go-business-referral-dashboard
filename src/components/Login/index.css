@@ -59,7 +59,7 @@
   font-size: 0.95rem;
   color: #334155;
   outline: none;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
   width: 100%;
   box-sizing: border-box;
 }
