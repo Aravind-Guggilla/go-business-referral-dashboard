@@ -1,9 +1,10 @@
 import {useState} from 'react'
-
+import {useNavigate, Navigate} from 'react-router-dom'
 import Cookies from 'js-cookie'
 import './index.css'
 
 const Login = () => {
+  const navigate = useNavigate()
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -11,10 +12,10 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false)
 
 
-  // const token = Cookies.get('jwt_token')
-  // if (token) {
-  //   return <Navigate to="/" replace />
-  // }
+  const token = Cookies.get('jwt_token')
+  if (token) {
+    return <Navigate to="/" replace />
+  }
 
   const onChangeEmail = event => {
     setEmail(event.target.value)
@@ -28,6 +29,7 @@ const Login = () => {
 
   const onSubmitSuccess = jwtToken => {
     Cookies.set('jwt_token', jwtToken, {expires: 30})
+    navigate('/', {replace: true})
   }
 
   const onSubmitFailure = errorMsg => {

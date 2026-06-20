@@ -1,16 +1,8 @@
 import {useState, useEffect} from 'react'
 import Cookies from 'js-cookie'
-import { 
-  DollarSign, 
-  CreditCard, 
-  Link as LinkIcon, 
-  Hourglass, 
-  Percent, 
-  Briefcase, 
-  Users, 
-  ArrowLeftRight 
-} from 'lucide-react'
+
 import Header from '../Header'
+import OverviewSection from '../OverviewSection'
 import Footer from '../Footer'
 import Loader from '../Loader'
 import Filters from '../Filters'
@@ -42,9 +34,7 @@ const Home = () => {
 
   useEffect(() => {
     const fetchDashboardData = async () => {
-      if (!isInitialLoading) {
-        setIsTableLoading(true)
-      }
+      setIsTableLoading(true)
       setIsError(false)
       setErrorMessage('')
       
@@ -70,11 +60,11 @@ const Home = () => {
         const data = await response.json()
         
         if (response.ok && data.success) {
-          const rootData = data.data || data
-          setMetrics(rootData.metrics || [])
-          setServiceSummary(rootData.serviceSummary || {})
-          setReferralInfo(rootData.referral || {})
-          setReferrals(rootData.referrals || [])
+          const dataObject = data.data || data
+          setMetrics(dataObject.metrics || [])
+          setServiceSummary(dataObject.serviceSummary || {})
+          setReferralInfo(dataObject.referral || {})
+          setReferrals(dataObject.referrals || [])
         } else {
           setIsError(true)
           setErrorMessage(data.message || `Failed to load dashboard data (Status: ${response.status})`)
@@ -95,34 +85,6 @@ const Home = () => {
     navigator.clipboard.writeText(text)
   }
 
-  const getMetricIcon = (label) => {
-    const normLabel = (label || '').toLowerCase()
-    if (normLabel.includes('balance')) {
-      return <DollarSign className="metric-icon-svg" />
-    }
-    if (normLabel.includes('discount percentage') || normLabel.includes('percent')) {
-      return <CreditCard className="metric-icon-svg" />
-    }
-    if (normLabel.includes('referral') && !normLabel.includes('discount')) {
-      return <LinkIcon className="metric-icon-svg" />
-    }
-    if (normLabel.includes('discount amount')) {
-      return <Hourglass className="metric-icon-svg" />
-    }
-    if (normLabel.includes('commission amount')) {
-      return <Percent className="metric-icon-svg" />
-    }
-    if (normLabel.includes('earning')) {
-      return <Briefcase className="metric-icon-svg" />
-    }
-    if (normLabel.includes('commission discount')) {
-      return <Users className="metric-icon-svg" />
-    }
-    if (normLabel.includes('bank transfer')) {
-      return <ArrowLeftRight className="metric-icon-svg" />
-    }
-    return <DollarSign className="metric-icon-svg" />
-  }
 
   return (
     <div className="dashboard-page-wrapper">
@@ -146,22 +108,7 @@ const Home = () => {
         ) : (
           <>
             {/* Overview Section */}
-            <section aria-label="Overview metrics" role="region" className="overview-section">
-              <h2 className="overview-title">Overview</h2>
-              <div className="metrics-grid">
-                {metrics.map(metric => (
-                  <div key={metric.id} className="metric-card">
-                    <div className="metric-icon-container">
-                      {getMetricIcon(metric.label)}
-                    </div>
-                    <div className="metric-details">
-                      <span className="metric-value">{metric.value}</span>
-                      <span className="metric-label">{metric.label}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </section>
+            <OverviewSection metrics={metrics} />
 
             {/* Service Summary Section */}
             <section aria-label="Service summary" className="service-summary-section">
