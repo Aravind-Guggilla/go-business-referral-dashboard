@@ -31,7 +31,7 @@ function App() {
           path="/dashboard/referrals"
           element={
             <ProtectedRoute>
-              <Navigate to="/" replace />
+              <Navigate to="/"/>
             </ProtectedRoute>
           }
         />
