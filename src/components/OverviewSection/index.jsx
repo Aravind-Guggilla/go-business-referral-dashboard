@@ -1,8 +1,8 @@
-import Metrics from "./components/Metrics"
+import Metrics from "../Metrics"
 import "./index.css"
 
 
-const OverviewSection = (metrics) => {
+const OverviewSection = ({ metrics }) => {
     return (  
     <section aria-label="Overview metrics" role="region" className="overview-section">
         <h2 className="overview-title">Overview</h2>
