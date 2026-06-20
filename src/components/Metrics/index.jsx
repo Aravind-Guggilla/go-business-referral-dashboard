@@ -41,11 +41,12 @@ const getMetricIcon = (label) => {
 
 
 const Metrics = (data) => {
-    const { id, label, value, kind } = data
+  console.log(data)
+    const { id, label, value} = data
     return (
         <div key={id} className="metric-card">
             <div className="metric-icon-container">
-                {getMetricIcon(kind)}
+                {getMetricIcon(label)}
             </div>
             <div className="metric-details">
                 <span className="metric-value">{value}</span>

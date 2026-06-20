@@ -6,8 +6,8 @@ import OverviewSection from '../OverviewSection'
 import ServiceSummary from '../ServiceSummary'
 import Footer from '../Footer'
 import Loader from '../Loader'
-import Filters from '../Filters'
-import ReferralsTable from '../ReferralsTable'
+// import Filters from '../Filters'
+// import ReferralsTable from '../ReferralsTable'
 import './index.css'
 
 const Home = () => {
@@ -112,10 +112,10 @@ const Home = () => {
             <OverviewSection metrics={metrics} />
 
             {/* Service Summary Section */}
-            <ServiceSummary serviceSummary={serviceSummary} />
+            <ServiceSummary {...serviceSummary} />
 
             {/* Share Referral Section */}
-            <section aria-label="Share referral" className="share-referral-section">
+            {/* <section aria-label="Share referral" className="share-referral-section">
               <div className="share-referral-card">
                 <h2 className="share-referral-title">Refer friends and earn more</h2>
                 <div className="share-fields-grid">
@@ -158,10 +158,10 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-            </section>
+            </section> */}
 
             {/* All Referrals Section */}
-            <section className="all-referrals-section">
+            {/* <section className="all-referrals-section">
               <Filters 
                 searchText={searchText} 
                 onSearchChange={setSearchText} 
@@ -171,7 +171,7 @@ const Home = () => {
               <div className={`table-container-outer ${isTableLoading ? 'table-loading-fade' : ''}`}>
                 <ReferralsTable referrals={referrals} />
               </div>
-            </section>
+            </section> */}
           </>
         )}
       </main>
