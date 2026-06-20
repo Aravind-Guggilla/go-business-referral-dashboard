@@ -25,7 +25,6 @@ const Home = () => {
   const [isError, setIsError] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
 
-  // Debounce search text
   useEffect(() => {
     const handler = setTimeout(() => {
       setDebouncedSearch(searchText)

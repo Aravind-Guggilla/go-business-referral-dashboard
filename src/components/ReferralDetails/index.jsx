@@ -31,7 +31,7 @@ const ReferralDetails = () => {
         // console.log(data.data.referrals[0]);
         
         if (response.ok && data.success) {
-          const referralData = data .data.referrals[0]
+          const referralData = data.data.referrals[0]
           setReferral(referralData)
         } else {
           setIsError(true)

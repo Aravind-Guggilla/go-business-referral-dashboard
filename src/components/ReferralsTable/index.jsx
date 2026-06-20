@@ -52,7 +52,6 @@ const ReferralsTable = ({referrals}) => {
 
   const renderPageNumbers = () => {
     const pages = []
-    // Ensure we render at least page 1 even if totalPages is 0
     const limit = Math.max(1, totalPages)
     for (let i = 1; i <= limit; i++) {
       pages.push(
