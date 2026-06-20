@@ -28,24 +28,11 @@ const ReferralDetails = () => {
       try {
         const response = await fetch(url, options)
         const data = await response.json()
+        // console.log(data.data.referrals[0]);
         
         if (response.ok && data.success) {
-          const innerData = data.data
-          let matched = null
-          
-          if (innerData) {
-            if (innerData.id && String(innerData.id) === String(id)) {
-              matched = innerData
-            } else if (innerData.referrals && Array.isArray(innerData.referrals)) {
-              matched = innerData.referrals.find(r => String(r.id) === String(id))
-            }
-          }
-          
-          if (matched) {
-            setReferral(matched)
-          } else {
-            setIsError(true)
-          }
+          const referralData = data .data.referrals[0]
+          setReferral(referralData)
         } else {
           setIsError(true)
         }
@@ -81,7 +68,7 @@ const ReferralDetails = () => {
       return (
         <div className="error-view-container">
           <h1 className="error-title">Referral not found</h1>
-          <Link to="/" className="back-link" aria-label="Back to dashboard">
+          <Link to="/" className="back-link">
             ← Back to dashboard
           </Link>
         </div>
@@ -90,7 +77,7 @@ const ReferralDetails = () => {
 
     return (
       <div className="details-card-container">
-        <Link to="/" className="back-link" aria-label="Back to dashboard">
+        <Link to="/" className="back-link">
           ← Back to dashboard
         </Link>
         

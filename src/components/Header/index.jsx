@@ -12,10 +12,10 @@ const Header = () => {
 
   return (
     <header className="header-container">
-      <Link to="/" aria-label="Go to dashboard home" className="header-brand-logo">
+      <Link to="/" className="header-brand-logo">
         Go Business
       </Link>
-      <nav aria-label="Primary" className="header-nav-container">
+      <nav  className="header-nav-container">
         <Link to="/" className="header-nav-link">Home</Link>
       </nav>
       <div className="header-actions">

@@ -29,8 +29,11 @@ const Home = () => {
   useEffect(() => {
     const handler = setTimeout(() => {
       setDebouncedSearch(searchText)
-    }, 300)
-    return () => clearTimeout(handler)
+    }, 500)
+
+    return () => {
+      clearTimeout(handler)
+    }
   }, [searchText])
 
   useEffect(() => {

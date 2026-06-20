@@ -13,14 +13,14 @@ const Filters = ({searchText, onSearchChange, sortBy, onSortChange}) => {
             placeholder="Name or service…"
             value={searchText}
             onChange={e => onSearchChange(e.target.value)}
-            aria-label="Search referrals"
+            
           />
           {searchText && (
             <button
               type="button"
               className="clear-search-btn"
               onClick={() => onSearchChange('')}
-              aria-label="Clear search"
+              
             >
               ×
             </button>
